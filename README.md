@@ -112,6 +112,7 @@ git add -A
 uvx pre-commit run --all-files
 
 uv run python -m cintel.signal_design_case
+uv run python -m cintel.signal_design_dawson
 
 uv run ruff format .
 uv run ruff check . --fix
