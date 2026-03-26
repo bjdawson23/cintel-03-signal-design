@@ -489,3 +489,62 @@
 2026-03-26 14:05:41 | INFO | P3 | SIGNALS_FILE = artifacts\signals_disney_wait.csv
 2026-03-26 14:05:41 | INFO | P3 | IMAGES_DIR = artifacts\images
 2026-03-26 14:05:42 | INFO | P3 | Saved charts: avg_wait_by_day.png, top_rides_avg_wait.png, avg_wait_by_hour.png, ride_hour_heatmap.png
+2026-03-26 14:20:28 | INFO | P3 | === RUN START ===
+2026-03-26 14:20:28 | INFO | P3 | project=CINTEL
+2026-03-26 14:20:28 | INFO | P3 | repo_dir=cintel-03-signal-design
+2026-03-26 14:20:28 | INFO | P3 | python=3.14.2
+2026-03-26 14:20:28 | INFO | P3 | os=Windows 11
+2026-03-26 14:20:28 | INFO | P3 | shell=powershell
+2026-03-26 14:20:28 | INFO | P3 | cwd=.
+2026-03-26 14:20:28 | INFO | P3 | github_actions=False
+2026-03-26 14:20:28 | INFO | P3 | ========================
+2026-03-26 14:20:28 | INFO | P3 | START main()
+2026-03-26 14:20:28 | INFO | P3 | ========================
+2026-03-26 14:20:28 | INFO | P3 | ROOT_DIR = .
+2026-03-26 14:20:28 | INFO | P3 | DATA_FILE = data\disney_wait_times.csv
+2026-03-26 14:20:28 | INFO | P3 | OUTPUT_FILE = artifacts\signals_disney_wait.csv
+2026-03-26 14:20:28 | INFO | P3 | ARTIFACTS_DIR = artifacts
+2026-03-26 14:20:28 | INFO | P3 | Loaded 7101 Disney wait-time records
+2026-03-26 14:20:28 | INFO | P3 | Designing signals from the raw metrics...
+2026-03-26 14:20:28 | INFO | P3 | Created signal columns: is_long_wait, delta_wait, land_avg_wait, wait_bucket
+2026-03-26 14:20:28 | INFO | P3 | Enhanced signals table has 7101 rows
+2026-03-26 14:20:28 | INFO | P3 | Wrote signals file: C:\Repos\cintel-03-signal-design\artifacts\signals_disney_wait.csv
+2026-03-26 14:20:28 | INFO | P3 | ========================
+2026-03-26 14:20:28 | INFO | P3 | Pipeline executed successfully!
+2026-03-26 14:20:28 | INFO | P3 | ========================
+2026-03-26 14:20:28 | INFO | P3 | END main()
+2026-03-26 15:32:24 | INFO | P3 | === RUN START ===
+2026-03-26 15:32:24 | INFO | P3 | project=CINTEL
+2026-03-26 15:32:24 | INFO | P3 | repo_dir=cintel-03-signal-design
+2026-03-26 15:32:24 | INFO | P3 | python=3.14.2
+2026-03-26 15:32:24 | INFO | P3 | os=Windows 11
+2026-03-26 15:32:24 | INFO | P3 | shell=powershell
+2026-03-26 15:32:24 | INFO | P3 | cwd=.
+2026-03-26 15:32:24 | INFO | P3 | github_actions=False
+2026-03-26 15:32:24 | INFO | P3 | ========================
+2026-03-26 15:32:24 | INFO | P3 | START main()
+2026-03-26 15:32:24 | INFO | P3 | ========================
+2026-03-26 15:32:24 | INFO | P3 | ROOT_DIR = .
+2026-03-26 15:32:24 | INFO | P3 | DATA_FILE = data\disney_wait_times.csv
+2026-03-26 15:32:24 | INFO | P3 | OUTPUT_FILE = artifacts\signals_disney_wait.csv
+2026-03-26 15:32:24 | INFO | P3 | ARTIFACTS_DIR = artifacts
+2026-03-26 15:32:24 | INFO | P3 | Loaded 7101 Disney wait-time records
+2026-03-26 15:32:24 | INFO | P3 | Designing signals from the raw metrics...
+2026-03-26 15:32:24 | INFO | P3 | Created signal columns: is_long_wait, land_avg_wait, wait_bucket
+2026-03-26 15:32:24 | INFO | P3 | Enhanced signals table has 7101 rows
+2026-03-26 15:32:24 | INFO | P3 | Wrote signals file: C:\Repos\cintel-03-signal-design\artifacts\signals_disney_wait.csv
+2026-03-26 15:32:24 | INFO | P3 | ========================
+2026-03-26 15:32:24 | INFO | P3 | Pipeline executed successfully!
+2026-03-26 15:32:24 | INFO | P3 | ========================
+2026-03-26 15:32:24 | INFO | P3 | END main()
+2026-03-26 15:34:29 | INFO | P3 | === RUN START ===
+2026-03-26 15:34:29 | INFO | P3 | project=CINTEL
+2026-03-26 15:34:29 | INFO | P3 | repo_dir=cintel-03-signal-design
+2026-03-26 15:34:29 | INFO | P3 | python=3.14.2
+2026-03-26 15:34:29 | INFO | P3 | os=Windows 11
+2026-03-26 15:34:29 | INFO | P3 | shell=powershell
+2026-03-26 15:34:29 | INFO | P3 | cwd=.
+2026-03-26 15:34:29 | INFO | P3 | github_actions=False
+2026-03-26 15:34:29 | INFO | P3 | SIGNALS_FILE = artifacts\signals_disney_wait.csv
+2026-03-26 15:34:29 | INFO | P3 | IMAGES_DIR = artifacts\images
+2026-03-26 15:34:31 | INFO | P3 | Saved charts: avg_wait_by_day.png, top_rides_avg_wait.png, avg_wait_by_hour.png, ride_hour_heatmap.png

@@ -42,7 +42,7 @@ Each row represents an attraction observation with fields such as:
 - `Day of Week`
 
 The pipeline derives operational signals such as **long-wait flags**,
-**ride-to-ride change**, **land average wait**, and a **wait bucket**.
+**land average wait**, and a **wait bucket**.
 
 ## My Modifications
 
@@ -52,7 +52,6 @@ Current derived signals added to `artifacts/signals_disney_wait.csv`:
 
 - `wait_minutes`
 - `is_long_wait`
-- `delta_wait`
 - `land_avg_wait`
 - `wait_bucket` (`low`, `medium`, `high`, `extreme`)
 

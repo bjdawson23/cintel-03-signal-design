@@ -79,7 +79,6 @@ def main() -> None:
     df_with_signals: pl.DataFrame = df_sorted.with_columns(
         [
             long_wait_flag_signal,
-            pl.col("wait_minutes").diff().over("Ride").fill_null(0).alias("delta_wait"),
         ]
     ).with_columns(
         [
@@ -94,9 +93,7 @@ def main() -> None:
         ]
     )
 
-    LOG.info(
-        "Created signal columns: is_long_wait, delta_wait, land_avg_wait, wait_bucket"
-    )
+    LOG.info("Created signal columns: is_long_wait, land_avg_wait, wait_bucket")
 
     signals_df = df_with_signals.select(
         [
@@ -106,7 +103,6 @@ def main() -> None:
             "Local Time",
             "wait_minutes",
             "is_long_wait",
-            "delta_wait",
             "wait_bucket",
             "land_avg_wait",
         ]
