@@ -183,19 +183,48 @@ def main() -> None:
     throughput_signal_recipe: pl.Expr = pl.col("requests").alias("throughput")
 
     # ----------------------------------------------------
-    # STEP 2.7: APPLY THE SIGNAL RECIPES TO THE DATAFRAME
+    # STEP 2.7: DEFINE THE SUCCESS RATE SIGNAL RECIPE
     # ----------------------------------------------------
-    # Now we use with_columns() to apply all the recipes
-    # and create a new DataFrame with the added signal columns.
+    # success_rate = 1 - error_rate, when requests > 0, else 0.0
+    success_rate_signal_recipe: pl.Expr = (
+        pl.when(is_requests_positive)
+        .then(1.0 - calculated_error_rate)
+        .otherwise(0.0)
+        .alias("success_rate")
+    )
+
+    # ----------------------------------------------------
+    # STEP 2.8: DEFINE THE SUCCESS RATE ALERT FLAG SIGNAL RECIPE
+    # ----------------------------------------------------
+    # Flag records where success_rate is below 98%.
+    success_rate_alert_flag_signal_recipe: pl.Expr = (
+        pl.col("success_rate") < 0.98
+    ).alias("is_success_rate_below_98")
+
+    # ----------------------------------------------------
+    # STEP 2.9: APPLY THE BASE SIGNAL RECIPES TO THE DATAFRAME
+    # ----------------------------------------------------
+    # First apply base recipes, including success_rate.
     df_with_signals: pl.DataFrame = df.with_columns(
         [
             error_rate_signal_recipe,
             avg_latency_signal_recipe,
             throughput_signal_recipe,
+            success_rate_signal_recipe,
         ]
     )
 
-    LOG.info("Created signal columns: error_rate, avg_latency_ms, throughput")
+    # ----------------------------------------------------
+    # STEP 2.10: APPLY THE ALERT FLAG RECIPE
+    # ----------------------------------------------------
+    # Apply the alert flag in a second pass so success_rate is available.
+    df_with_signals = df_with_signals.with_columns(
+        [success_rate_alert_flag_signal_recipe]
+    )
+
+    LOG.info(
+        "Created signal columns: error_rate, avg_latency_ms, throughput, success_rate, is_success_rate_below_98"
+    )
 
     # ----------------------------------------------------
     # STEP 3: SELECT THE COLUMNS WE WANT TO SAVE
@@ -211,6 +240,8 @@ def main() -> None:
             "error_rate",
             "avg_latency_ms",
             "throughput",
+            "success_rate",
+            "is_success_rate_below_98",
         ]
     )
 

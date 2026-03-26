@@ -46,3 +46,12 @@ data/static_data_stellar_analytics.csv
 
 You may modify the copied dataset as needed for your project,
 or choose your own dataset if appropriate.
+
+## My Modifications
+
+I added a success rate signal.  It complements the error_rate signal.
+Interpretation:  Closer to 1.0 signals a healthier connection.  Closer to 0.0 is not healty.
+
+I changed the errors from 4 to 140 on row 6 of the data to make sure to flag that row.  
+I also added a success rate signal to flag any success rate under .98 as a connection to check.
+Four of the rows in the data came back with a "true" on success rate under .98.

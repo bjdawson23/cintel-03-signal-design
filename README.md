@@ -31,12 +31,21 @@ signals are created from raw measurements.
 
 ## Data
 
-The example pipeline reads system metrics from: `data/system_metrics_case.csv`.
+The example pipeline reads system metrics from: `data/system_metrics_dawson.csv`.
 
 Each row represents a system observation with raw measurements
 such as requests, errors, and total latency.
 The pipeline derives signals such as **error rate** and
 **average latency** from these raw values.
+
+## My Modifications
+
+I added a success rate signal.  It complements the error_rate signal.
+Interpretation:  Closer to 1.0 signals a healthier connection.  Closer to 0.0 is not healty.
+
+I changed the errors from 4 to 140 on row 6 of the data to make sure to flag that row.
+I also added a success rate signal to flag any success rate under .98 as a connection to check.
+Four of the rows in the data came back with a "true" on success rate under .98.
 
 ## Working Files
 
