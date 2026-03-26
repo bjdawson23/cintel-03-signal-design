@@ -22,38 +22,61 @@ This project introduces **signal design**.
 
 The goal is to copy this repository,
 set up your environment,
-run the example analysis,
-and explore how useful signals can be derived from raw system metrics.
+run the Disney wait-time analysis,
+and explore how useful signals can be derived from ride wait data.
 
 You will run the example pipeline, read the code,
 and make small modifications to understand how
-signals are created from raw measurements.
+signals are created from operational measurements.
 
 ## Data
 
-The example pipeline reads system metrics from: `data/system_metrics_dawson.csv`.
+The Disney pipeline reads wait-time data from: `data/disney_wait_times.csv`.
 
-Each row represents a system observation with raw measurements
-such as requests, errors, and total latency.
-The pipeline derives signals such as **error rate** and
-**average latency** from these raw values.
+Each row represents an attraction observation with fields such as:
+
+- `Land`
+- `Ride`
+- `Wait Time`
+- `Local Time`
+- `Day of Week`
+
+The pipeline derives operational signals such as **long-wait flags**,
+**ride-to-ride change**, **land average wait**, and a **wait bucket**.
 
 ## My Modifications
 
-I added a success rate signal.  It complements the error_rate signal.
-Interpretation:  Closer to 1.0 signals a healthier connection.  Closer to 0.0 is not healty.
+I built a Disney wait-time signal pipeline and visualization workflow.
 
-I changed the errors from 4 to 140 on row 6 of the data to make sure to flag that row.
-I also added a success rate signal to flag any success rate under .98 as a connection to check.
-Four of the rows in the data came back with a "true" on success rate under .98.
+Current derived signals in `artifacts/signals_disney_wait.csv`:
+
+- `wait_minutes`
+- `is_long_wait`
+- `delta_wait`
+- `land_avg_wait`
+- `wait_bucket` (`low`, `medium`, `high`, `extreme`)
+
+I also added chart generation with:
+
+- `uv run python -m cintel.plot_disney_waits`
+
+This produces:
+
+- `artifacts/images/avg_wait_by_day.png`
+- `artifacts/images/top_rides_avg_wait.png`
+- `artifacts/images/avg_wait_by_hour.png`
+- `artifacts/images/ride_hour_heatmap.png`
+
+Together, these outputs make it easier to identify peak congestion windows,
+compare attraction pressure within each land, and summarize guest-facing wait conditions.
 
 ## Working Files
 
 You'll work with just these areas:
 
 - **data/** - it starts with the data
-- **docs/** - tell the story
-- **src/cintel/** - where the magic happens
+- **docs/** - project narrative and interpretation
+- **src/cintel/** - analysis and plotting modules
 - **pyproject.toml** - update authorship & links
 - **zensical.toml** - update authorship & links
 
@@ -76,8 +99,8 @@ Working through issues is part of implementing professional projects.
 
 ## Success
 
-After completing Phase 1. **Start & Run**, you'll have your own GitHub project,
-running on your machine, and running the example will print out:
+After completing Phase 1. **Start & Run**, you'll have your own GitHub project
+running on your machine. Running the Disney signal pipeline will print:
 
 ```shell
 ========================
@@ -122,6 +145,8 @@ uvx pre-commit run --all-files
 
 uv run python -m cintel.signal_design_case
 uv run python -m cintel.signal_design_dawson
+uv run python -m cintel.signal_design_disney_wait
+uv run python -m cintel.plot_disney_waits
 
 uv run ruff format .
 uv run ruff check . --fix
