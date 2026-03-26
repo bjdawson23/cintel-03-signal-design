@@ -48,7 +48,7 @@ The pipeline derives operational signals such as **long-wait flags**,
 
 I built a Disney wait-time signal pipeline and visualization workflow.
 
-Current derived signals in `artifacts/signals_disney_wait.csv`:
+Current derived signals added to `artifacts/signals_disney_wait.csv`:
 
 - `wait_minutes`
 - `is_long_wait`
